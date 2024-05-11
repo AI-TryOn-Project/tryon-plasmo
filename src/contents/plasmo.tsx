@@ -19,7 +19,7 @@ const QueryTextAnywhere = () => {
 
   useEffect(() => {
     loadingPort.send({
-      message: "",
+      message111: "2222222",
     });
   }, []);
   console.log(loadingPort, 11111112222);
