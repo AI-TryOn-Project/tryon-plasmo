@@ -1,11 +1,20 @@
-import type { PlasmoMessaging } from "@plasmohq/messaging"
+import type { PlasmoMessaging } from "@plasmohq/messaging";
 
+let show = true;
 const handler: PlasmoMessaging.PortHandler = async (req, res) => {
-  console.log(req)
+  console.log(req);
+  chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+    console.log(11111, info, tab);
+    res.send({
+      message: "showLoading",
+    });
 
-  res.send({
-    message: "Hello from port handler"
-  })
-}
+    setTimeout(() => {
+      res.send({
+        message: "hideLoading",
+      });
+    }, 3000);
+  });
+};
 
-export default handler
+export default handler;
