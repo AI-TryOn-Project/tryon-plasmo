@@ -1,13 +1,14 @@
 import cls from "classnames"
 import React from "react"
 
+import { sendToBackground } from "@plasmohq/messaging"
 import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { useBodyStore, useTabStore, useTryOnStore, useUnitStore } from "~store"
 import { TAB } from "~type"
+import { captureScreen } from "~utils"
 import { setToLocalStorage } from "~utils/save"
-import {captureScreen} from "~utils"
 
 import style from "./style.module.less"
 
@@ -39,13 +40,16 @@ const SaveButton = () => {
     //   )
     // }
     if (body.bust === "" || body.waist === "" || body.hip === "") {
-          alert("Please fill in all the measurements")
-          return
-        }
-    captureScreen().then((screenShoot)=>{
-      console.log(screenShoot,'screenShoot~~~~~~~~~')
+      alert("Please fill in all the measurements")
+      return
+    }
+    const screenShoot = await captureScreen()
+    const resp = await sendToBackground({
+      name: "sizeRecomm",
+      body: {
+        screenShoot
+      }
     })
-
   }
   return (
     <div className={style.container} onClick={handleClick}>
