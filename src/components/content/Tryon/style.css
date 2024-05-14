@@ -3,8 +3,8 @@
   transform: translate(20%, 55%);
   /* width: 1085px;
   height: 777px; */
-  width: 695px;
-  height: 442px;
+  width: 945px;
+  height: 600px;
   max-width: calc(100vw - 20px);
   max-height: calc(100vh - 20px);
   position: absolute;
@@ -25,7 +25,7 @@
 }
 
 .image-container {
-  width: calc(50vh * var(--ratio));
+  /* width: calc(50vh * var(--ratio)); */
   width: 50%;
   height: 100%;
   display: flex;
@@ -39,8 +39,8 @@
   /* max-width: 100%;
   max-height: calc(100% - 40px);
   height: auto; */
-  width: 265.402px;
-  height: 394px;
+  width: calc(340px * var(--ratio));
+  height: calc(510px * var(--ratio));
   /* border-radius: 16px; */
 }
 
